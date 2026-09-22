@@ -23,7 +23,12 @@
 
     --text: #3B2A20;          /* warm dark brown instead of black */
     --text-muted: #7A5C4A;
+
+    --link: #1D4ED8;          /* hyperlinks stay blue; visited links keep the same colour */
+    --link-hover: #0645AD;
 }
+
+/* Every link rule below also covers :visited so nothing turns purple after a click. */
 
 html {
     background-color: var(--bg);
@@ -98,8 +103,10 @@ blockquote {
     font-size: 1.0rem;
 }
 
-.bx--btn--primary {
+.bx--btn--primary,
+.bx--btn--primary:visited {
     background-color: var(--primary);
+    color: #fff;
 }
 
 .bx--btn--primary:hover {
@@ -111,7 +118,8 @@ blockquote {
     box-shadow: inset 0 0 0 1px var(--primary-dark), inset 0 0 0 2px var(--bg);
 }
 
-.bx--btn--tertiary {
+.bx--btn--tertiary,
+.bx--btn--tertiary:visited {
     border-color: var(--primary);
     color: var(--primary-dark);
 }
@@ -129,12 +137,13 @@ blockquote {
 }
 
 /* Links */
-.bx--link {
-    color: var(--primary-dark);
+.bx--link,
+.bx--link:visited {
+    color: var(--link);
 }
 
 .bx--link:hover {
-    color: var(--primary);
+    color: var(--link-hover);
 }
 
 .bx--skip-to-content {
@@ -191,7 +200,8 @@ blockquote {
     list-style-type: none;
 }
 
-.hncityMenu li a {
+.hncityMenu li a,
+.hncityMenu li a:visited {
     display: flex;
     align-items: center;
     height: 100%;
@@ -276,16 +286,15 @@ a.bx--side-nav__link:focus,
     margin-bottom: 0.75rem;
 }
 
-#main-content a:not([class]) {
-    color: var(--primary-dark);
+#main-content a:not([class]),
+#main-content a:not([class]):visited {
+    color: var(--link);
     text-decoration: underline;
-    text-decoration-color: var(--accent);
     text-underline-offset: 2px;
 }
 
 #main-content a:not([class]):hover {
-    color: var(--primary);
-    text-decoration-color: currentColor;
+    color: var(--link-hover);
 }
 
 #main-content ul,
@@ -342,7 +351,8 @@ a.bx--side-nav__link:focus,
     border-left-color: var(--primary);
 }
 
-.postSection a {
+.postSection a,
+.postSection a:visited {
     color: var(--text);
     text-decoration: none;
 }
@@ -360,7 +370,8 @@ a.bx--side-nav__link:focus,
     border-bottom: 1px solid var(--border);
 }
 
-.otherPosts {
+.otherPosts,
+.otherPosts:visited {
     display: block;
     color: var(--text);
     text-decoration: none;
@@ -417,11 +428,12 @@ a.bx--side-nav__link:focus,
     margin-top: 1rem;
 }
 
-.section-cards a {
+.section-cards a,
+.section-cards a:visited {
     display: block;
     padding: 1.25rem;
     background-color: var(--surface);
-    color: inherit;
+    color: var(--text);
     text-decoration: none;
     border: 1px solid var(--border);
     border-left: 3px solid var(--primary);
