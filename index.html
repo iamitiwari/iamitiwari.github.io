@@ -1,46 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
-    <style>
-       	img {
-            width: auto;      /* Adjust as needed */
-            height: auto;
-            margin-bottom: 20px;
-            border-radius: 10px; /* Optional */
-        }
+---
+title: About me
+section: About me
+layout: default
+---
+<section id="about" class="bx--content">
+    <div id="profile">
+        <img src="{{ '/images/photo.jpg' | relative_url }}" alt="Portrait of Amit Tiwari">
+        <div id="profile-text">
+            <h1>Amit Tiwari</h1>
+            <p class="tagline">Graduate student &middot; machine learning &amp; systems</p>
+            <p>
+                Hello! I'm Amit. I am a postgraduate student working on machine learning, with a
+                current focus on making large language models smaller and cheaper to run
+                (quantization, pruning and distillation) without losing what makes them useful.
+            </p>
+            <p>
+                This site is where I keep notes for myself and anyone who finds them useful: things I
+                have been reading, what I am working on, and the occasional unrelated thought.
+            </p>
+            <p class="profile-links">
+                <a href="https://github.com/iamitiwari" target="_blank" rel="noopener" class="bx--link">GitHub</a>
+                <a href="mailto:amitlives2explore@gmail.com" class="bx--link">Email</a>
+            </p>
+        </div>
+    </div>
+</section>
 
-	 body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #111;
-        }
-        p {
-            font-size: 1.2rem;
-            max-width: 500px;
-            line-height: 1.6;
-        }
-    </style>
-</head>
-<img src="images/mainDisplay.jpg">
-<body>
-    <h1>Konnichiwa!</h1>
-    <p>Welcome to my personal site.<br> The site is still under construction 🚧. <br> Please wait for further updates.<br> Arigato for your patience.<br> Until then, Matane 👋.</p>
-<<p><a href="https://www.instagram.com/popular/psyduck-sleeves/">Picture Credits</a></p>
-</body>
-</html>
+<section id="sections" class="bx--content">
+    <h2>Around the site</h2>
+    <div class="section-cards">
+        <a href="{{ '/readings/' | relative_url }}">
+            <h3>Readings</h3>
+            <p>Papers, books and articles, with short notes on why they mattered.</p>
+        </a>
+        <a href="{{ '/research/' | relative_url }}">
+            <h3>Research</h3>
+            <p>What I am working on, and write-ups of finished projects.</p>
+        </a>
+        <a href="{{ '/random/' | relative_url }}">
+            <h3>Random</h3>
+            <p>Everything that does not fit in the other two.</p>
+        </a>
+    </div>
+</section>

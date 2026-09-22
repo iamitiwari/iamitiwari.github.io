@@ -1,0 +1,27 @@
+---
+layout: default
+---
+{% comment %}
+List page for one section. Front matter of the page sets:
+  categoryName – the post category to list (readings / research / random)
+  section      – menu label, used to highlight the current menu item
+The page body ({{ content }}) is rendered above the list as an introduction.
+{% endcomment %}
+<div id="about-this-page" class="bx--content">
+    {{ content }}
+</div>
+<div id="post-list" class="bx--content">
+    {% assign posts = site.posts | where_exp: "post", "post.categories contains page.categoryName" %}
+    {% if posts.size == 0 %}
+        <p class="muted">Nothing here yet — check back later.</p>
+    {% endif %}
+    {% for post in posts %}
+        <section class="mainTitle postSection">
+            <a href="{{ post.url | relative_url }}">
+                <p class="small primaryDark">{{ post.date | date: "%B %-d, %Y" }}</p>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.excerpt | strip_html | truncatewords: 30, '…' }}</p>
+            </a>
+        </section>
+    {% endfor %}
+</div>

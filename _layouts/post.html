@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{% assign category = page.categories | first %}
+<div id="post-about" class="bx--content">
+    <p class="small primaryDark">
+        {{ page.date | date: "%B %-d, %Y" }}
+        {% if category %} &middot; <a href="{{ '/' | append: category | append: '/' | relative_url }}" class="bx--link">{{ category | capitalize }}</a>{% endif %}
+    </p>
+    <h2>{{ page.title }}</h2>
+</div>
+<div id="post-content" class="bx--content">
+    {{ content }}
+</div>
+{% assign others = site.posts | where_exp: "post", "post.categories contains category and post.url != page.url" %}
+{% if others.size > 0 %}
+<div id="other-posts" class="bx--content">
+    <h4>More in {{ category | capitalize }}</h4>
+    {% for post in others limit: 3 %}
+        <a href="{{ post.url | relative_url }}" class="otherPosts">
+            <p><span class="small primaryDark spaceOneRem">{{ post.date | date: "%B %-d, %Y" }}</span>{{ post.title }}</p>
+        </a>
+    {% endfor %}
+</div>
+{% endif %}

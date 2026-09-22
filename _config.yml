@@ -1,0 +1,32 @@
+encoding: "utf-8"
+markdown: kramdown
+
+url: "https://iamitiwari.github.io"
+baseurl: ""
+title: "Amit Tiwari"
+description: "Personal website of Amit Tiwari — about, readings, research and random notes."
+author: "Amit Tiwari"
+
+# Theme colours (Skylight Jekyll Theme)
+primary-color: "#3799FA"
+accent-color: "#82BFFB"
+primary-dark-color: "#2C79C7"
+
+permalink: /:categories/:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - THIRD-PARTY-NOTICES.md

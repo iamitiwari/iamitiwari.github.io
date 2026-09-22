@@ -1,0 +1,7 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="stylesheet" href="https://unpkg.com/carbon-components@10/css/carbon-components.min.css" />
+<link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}" />
+<link rel="alternate" type="application/rss+xml" href="{{ '/feed.xml' | relative_url }}" title="{{ site.title }} Feed">
+<title>{% if page.title and page.title != site.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
