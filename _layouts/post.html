@@ -12,7 +12,8 @@ layout: default
 <div id="post-content" class="bx--content">
     {{ content }}
 </div>
-{% assign others = site.posts | where_exp: "post", "post.categories contains category and post.url != page.url" %}
+{% comment %} two where_exp filters: Jekyll 3 (GitHub Pages) does not support "and" inside one {% endcomment %}
+{% assign others = site.posts | where_exp: "post", "post.categories contains category" | where_exp: "post", "post.url != page.url" %}
 {% if others.size > 0 %}
 <div id="other-posts" class="bx--content">
     <h4>More in {{ category | capitalize }}</h4>
