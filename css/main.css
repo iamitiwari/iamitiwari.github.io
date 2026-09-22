@@ -5,10 +5,39 @@
  * https://github.com/lego37yoon/skylight-jekyll-theme
  * Copyright (c) 2021 paperbox — MIT License (see THIRD-PARTY-NOTICES.md)
  *
- * Colours come from _config.yml (primary-color, primary-dark-color, accent-color);
- * this file is processed by Jekyll/Liquid because of the front matter above.
+ * Primary / primary-dark / accent come from _config.yml (this file is run through
+ * Liquid because of the front matter above). Surface and text colours are the
+ * variables below — the warm peach scheme lives here.
  */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+:root {
+    --primary: {{ site.primary-color }};
+    --primary-dark: {{ site.primary-dark-color }};
+    --accent: {{ site.accent-color }};
+
+    --bg: #FFF3EA;            /* page: light peach */
+    --surface: #FFE7D6;       /* header, footer, cards: a shade deeper */
+    --surface-raised: #FFFAF6; /* post cards, code blocks: near-cream, sits "above" the page */
+    --border: #F0CFB8;
+
+    --text: #3B2A20;          /* warm dark brown instead of black */
+    --text-muted: #7A5C4A;
+}
+
+html {
+    background-color: var(--bg);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+/* Guard against Carbon ever giving .bx--content its own background; the page colour should show through. */
+.bx--content {
+    background-color: transparent;
+}
 
 p {
     font-size: 1.0rem;
@@ -19,8 +48,11 @@ b {
 }
 
 blockquote {
-    padding: 2.0rem;
+    margin: 1rem 0;
+    padding: 1rem 1.5rem;
     font-style: italic;
+    border-left: 3px solid var(--accent);
+    background-color: var(--surface-raised);
 }
 
 [hidden] {
@@ -44,7 +76,11 @@ blockquote {
 }
 
 .primaryDark {
-    color: {{ site.primary-dark-color }};
+    color: var(--primary-dark);
+}
+
+.muted {
+    color: var(--text-muted);
 }
 
 .bx--list--unordered {
@@ -57,59 +93,62 @@ blockquote {
     font-size: 1.0rem;
 }
 
+/* Buttons */
 .bx--btn {
     font-size: 1.0rem;
 }
 
 .bx--btn--primary {
-    background-color: {{ site.primary-color }};
+    background-color: var(--primary);
 }
 
 .bx--btn--primary:hover {
-    background-color: {{ site.primary-dark-color }};
+    background-color: var(--primary-dark);
 }
 
 .bx--btn--primary:focus {
-    border-color: {{ site.accent-color }};
-    box-shadow: inset 0 0 0 1px {{ site.accent-color }}, inset 0 0 0 2px #fff;
+    border-color: var(--primary-dark);
+    box-shadow: inset 0 0 0 1px var(--primary-dark), inset 0 0 0 2px var(--bg);
 }
 
 .bx--btn--tertiary {
-    border-color: {{ site.primary-color }};
-    color: {{ site.primary-color }};
+    border-color: var(--primary);
+    color: var(--primary-dark);
 }
 
 .bx--btn--tertiary:hover {
-    background-color: {{ site.primary-color }};
+    background-color: var(--primary);
     color: #fff;
 }
 
 .bx--btn--tertiary:focus {
-    background-color: {{ site.primary-color }};
+    background-color: var(--primary);
     color: #fff;
-    border-color: {{ site.primary-color }};
-    box-shadow: inset 0 0 0 1px {{ site.primary-color }}, inset 0 0 0 2px #fff;
+    border-color: var(--primary);
+    box-shadow: inset 0 0 0 1px var(--primary), inset 0 0 0 2px var(--bg);
 }
 
-.bx--header {
-    border-bottom: 2px solid {{ site.primary-color }};
-    background-color: white;
-}
-
+/* Links */
 .bx--link {
-    color: {{ site.primary-dark-color }};
+    color: var(--primary-dark);
 }
 
 .bx--link:hover {
-    color: {{ site.primary-color }};
+    color: var(--primary);
 }
 
 .bx--skip-to-content {
-    border: 2px solid {{ site.accent-color }};
-    background-color: white;
-    color: black;
+    border: 2px solid var(--accent);
+    background-color: var(--surface);
+    color: var(--text);
     font-family: 'Pretendard Variable', sans-serif;
     font-weight: 200;
+}
+
+/* Header */
+.bx--header {
+    border-bottom: 2px solid var(--primary);
+    background-color: var(--surface);
 }
 
 .mainTitle {
@@ -117,60 +156,38 @@ blockquote {
     font-size: 18px;
     padding-left: 16px;
     padding-right: 32px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
-.mainTitle a {
-    color: black;
-    text-decoration: none;
-}
-
+.mainTitle a,
 .mainTitle a:hover,
 .mainTitle a:visited {
-    color: black;
+    color: var(--text);
     text-decoration: none;
-}
-
-.postSection {
-    margin-bottom: 2rem;
-}
-
-.postSection h3 {
-    margin: 0.25rem 0 0.5rem 0;
-}
-
-.otherPosts {
-    color: black;
-    text-decoration: none;
-    padding: 1rem;
 }
 
 .bx--header__menu-toggle svg path {
-    fill: black;
+    fill: var(--text);
 }
 
 .bx--header__menu-toggle:hover {
-    background-color: {{ site.accent-color }};
-}
-
-.bx--header__menu-toggle:hover svg path {
-    fill: white;
+    background-color: var(--accent);
 }
 
 .bx--header__action:focus {
-    border-color: {{ site.accent-color }};
+    border-color: var(--primary);
 }
 
 .bx--header__action--active {
-    border-right: 1px solid {{ site.accent-color }};
-    border-bottom: 1px solid {{ site.accent-color }};
-    border-left: 1px solid {{ site.accent-color }};
+    border-right: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary);
+    border-left: 1px solid var(--primary);
 }
 
 .hncityMenu {
     font-family: 'Pretendard Variable', sans-serif;
     font-size: 18px;
-    font-weight: 200;
+    font-weight: 300;
     list-style-type: none;
 }
 
@@ -182,35 +199,43 @@ blockquote {
     padding-right: 16px;
     text-decoration: none;
     user-select: none;
-    color: black;
+    color: var(--text);
     border: 2px solid transparent;
 }
 
 .hncityMenu li a:hover {
     font-weight: 400;
-    background-color: {{ site.accent-color }};
-    color: white;
+    background-color: var(--accent);
+    color: var(--text);
 }
 
 .hncityMenu li a:focus {
-    border: 2px solid {{ site.accent-color }};
+    border: 2px solid var(--primary);
 }
 
 /* current section */
 .hncityMenu li a[aria-current="page"] {
-    font-weight: 400;
-    box-shadow: inset 0 -3px 0 0 {{ site.primary-color }};
+    font-weight: 500;
+    color: var(--primary-dark);
+    box-shadow: inset 0 -3px 0 0 var(--primary);
 }
 
+/* mobile side nav */
 .bx--navigation {
-    background-color: #FFFFFF;
+    background-color: var(--surface);
+    border-right: 1px solid var(--border);
+}
+
+.bx--navigation .bx--side-nav__link {
+    color: var(--text);
 }
 
 a.bx--side-nav__link:focus,
 .bx--side-nav a.bx--header__menu-item:focus {
-    outline: 2px solid {{ site.accent-color }};
+    outline: 2px solid var(--primary);
 }
 
+/* Main content */
 #main-content {
     padding: 0;
     font-family: 'Pretendard Variable', sans-serif;
@@ -219,6 +244,14 @@ a.bx--side-nav__link:focus,
     margin-left: auto;
     margin-right: auto;
     min-height: calc(100vh - 3rem - 6rem);
+    color: var(--text);
+}
+
+#main-content h1,
+#main-content h2,
+#main-content h3,
+#main-content h4 {
+    color: var(--text);
 }
 
 #main-content h2 {
@@ -244,7 +277,15 @@ a.bx--side-nav__link:focus,
 }
 
 #main-content a:not([class]) {
-    color: {{ site.primary-dark-color }};
+    color: var(--primary-dark);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 2px;
+}
+
+#main-content a:not([class]):hover {
+    color: var(--primary);
+    text-decoration-color: currentColor;
 }
 
 #main-content ul,
@@ -262,15 +303,72 @@ a.bx--side-nav__link:focus,
     font-size: 0.875rem;
 }
 
+#main-content code {
+    background-color: var(--surface);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+}
+
 #main-content pre {
-    background-color: #F4F4F4;
+    background-color: var(--surface-raised);
+    border: 1px solid var(--border);
     padding: 1rem;
     overflow-x: auto;
     margin-bottom: 1rem;
 }
 
-.muted {
-    color: #6F6F6F;
+#main-content pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+#main-content hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 1.5rem 0;
+}
+
+/* Post lists */
+.postSection {
+    margin-bottom: 1rem;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    transition: border-color .15s ease;
+}
+
+.postSection:hover {
+    border-left-color: var(--primary);
+}
+
+.postSection a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.postSection h3 {
+    margin: 0.25rem 0 0.5rem 0;
+}
+
+.postSection p:last-child {
+    margin-bottom: 0;
+    color: var(--text-muted);
+}
+
+#post-about {
+    border-bottom: 1px solid var(--border);
+}
+
+.otherPosts {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.5rem 0;
+}
+
+.otherPosts:hover {
+    color: var(--primary-dark);
 }
 
 /* Landing page: portrait + intro */
@@ -286,7 +384,8 @@ a.bx--side-nav__link:focus,
     height: 12rem;
     object-fit: cover;
     border-radius: 50%;
-    border: 3px solid {{ site.accent-color }};
+    border: 4px solid var(--accent);
+    box-shadow: 0 0 0 1px var(--border);
     flex-shrink: 0;
 }
 
@@ -302,7 +401,7 @@ a.bx--side-nav__link:focus,
 
 #profile-text .tagline {
     font-size: 1.125rem;
-    color: #525252;
+    color: var(--text-muted);
     margin-bottom: 1rem;
 }
 
@@ -321,14 +420,20 @@ a.bx--side-nav__link:focus,
 .section-cards a {
     display: block;
     padding: 1.25rem;
-    background-color: #F4F4F4;
+    background-color: var(--surface);
     color: inherit;
     text-decoration: none;
-    border-left: 3px solid {{ site.primary-color }};
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--primary);
+    transition: background-color .15s ease;
 }
 
 .section-cards a:hover {
-    background-color: #E8E8E8;
+    background-color: var(--accent);
+}
+
+.section-cards a:hover p {
+    color: var(--text); /* muted text drops below AA contrast on the accent background */
 }
 
 .section-cards h3 {
@@ -337,14 +442,31 @@ a.bx--side-nav__link:focus,
 
 .section-cards p {
     margin: 0;
-    color: #525252;
+    color: var(--text-muted);
 }
 
+/* CV page: embedded PDF */
+.cv-actions .bx--btn {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cv-frame {
+    display: block;
+    width: 100%;
+    height: 85vh;
+    min-height: 30rem;
+    border: 1px solid var(--border);
+    background-color: var(--surface-raised);
+}
+
+/* Footer */
 footer {
     font-family: 'Pretendard Variable', sans-serif;
-    font-weight: 200;
-    border-top: 2px solid {{ site.primary-color }};
-    background-color: white;
+    font-weight: 300;
+    border-top: 2px solid var(--primary);
+    background-color: var(--surface);
+    color: var(--text-muted);
     width: 100%;
     padding: 1rem 2rem;
 }

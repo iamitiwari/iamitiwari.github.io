@@ -1,0 +1,27 @@
+---
+title: CV
+section: About me
+permalink: /cv/
+layout: default
+cv_file: /files/Amit_Tiwari_CV.pdf
+---
+{% assign cv = page.cv_file | relative_url %}
+<section id="cv" class="bx--content">
+    <h2>Curriculum vitae</h2>
+    <p class="cv-actions">
+        <a href="{{ cv }}" target="_blank" rel="noopener" class="bx--btn bx--btn--primary">Open in new tab</a>
+        <a href="{{ cv }}" download class="bx--btn bx--btn--tertiary">Download PDF</a>
+    </p>
+    {% comment %}
+    <object> renders the PDF with the browser's built-in viewer on desktop. Mobile browsers
+    (notably iOS Safari) show at most the first page or nothing, so the fallback text and the
+    buttons above are the real path for those readers.
+    {% endcomment %}
+    <object class="cv-frame" data="{{ cv }}#view=FitH" type="application/pdf" aria-label="CV as PDF">
+        <p class="muted">
+            Your browser cannot display the PDF inline.
+            <a href="{{ cv }}" target="_blank" rel="noopener" class="bx--link">Open it in a new tab</a>
+            or use the download button above.
+        </p>
+    </object>
+</section>

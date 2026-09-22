@@ -7,10 +7,11 @@ title: "Amit Tiwari"
 description: "Personal website of Amit Tiwari — about, readings, research and random notes."
 author: "Amit Tiwari"
 
-# Theme colours (Skylight Jekyll Theme)
-primary-color: "#3799FA"
-accent-color: "#82BFFB"
-primary-dark-color: "#2C79C7"
+# Theme colours (Skylight Jekyll Theme) — warm peach/terracotta scheme.
+# Surface and text colours live in css/main.css (:root variables).
+primary-color: "#B8552F"        # terracotta: buttons, borders, current-menu marker
+primary-dark-color: "#8F3F22"   # deeper terracotta: links, hover
+accent-color: "#F6C4A8"         # soft peach: hover backgrounds, photo ring
 
 permalink: /:categories/:year/:month/:day/:title/
 
